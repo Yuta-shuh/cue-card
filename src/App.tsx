@@ -17,6 +17,10 @@ function App() {
     if (sizeParam && !isNaN(Number(sizeParam))) {
       setFontSize(Number(sizeParam));
     }
+    const darkParam = params.get('dark');
+    if (darkParam === 'true') {
+      setIsDark(true);
+    }
   }, []);
 
   // Sync state to URL on change
@@ -32,9 +36,14 @@ function App() {
     } else {
       params.delete('size');
     }
+    if (isDark) {
+      params.set('dark', 'true');
+    } else {
+      params.delete('dark');
+    }
     const newUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`;
     window.history.replaceState({}, '', newUrl);
-  }, [text, fontSize]);
+  }, [text, fontSize, isDark]);
 
   // Sync document title
   useEffect(() => {
