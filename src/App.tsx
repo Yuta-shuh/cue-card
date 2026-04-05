@@ -166,11 +166,11 @@ function App() {
       {/* Fullscreen Preview Area */}
       <main
         ref={previewRef}
-        className={`flex-1 p-6 md:p-12 flex items-center justify-center overflow-auto selection:bg-blue-300 selection:text-blue-900 ${isDark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
+        className={`flex-1 p-6 md:p-12 flex flex-col overflow-auto selection:bg-blue-300 selection:text-blue-900 ${isDark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
           }`}
       >
         <div
-          className="w-full text-center whitespace-pre-wrap break-words min-h-[40vh] flex items-center justify-center font-bold"
+          className="w-full m-auto text-center whitespace-pre-wrap break-words font-bold"
           style={{ fontSize: `${fontSize}rem`, lineHeight: '1.2' }}
         >
           {text || <span className="opacity-20 select-none font-normal">CueCard</span>}
