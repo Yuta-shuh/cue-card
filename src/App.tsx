@@ -13,6 +13,10 @@ function App() {
     if (textParam) {
       setText(textParam);
     }
+    const sizeParam = params.get('size');
+    if (sizeParam && !isNaN(Number(sizeParam))) {
+      setFontSize(Number(sizeParam));
+    }
   }, []);
 
   // Sync state to URL on change
@@ -23,9 +27,14 @@ function App() {
     } else {
       params.delete('text');
     }
+    if (fontSize !== 10) {
+      params.set('size', fontSize.toString());
+    } else {
+      params.delete('size');
+    }
     const newUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`;
     window.history.replaceState({}, '', newUrl);
-  }, [text]);
+  }, [text, fontSize]);
 
   const handleFullscreen = () => {
     if (previewRef.current) {
