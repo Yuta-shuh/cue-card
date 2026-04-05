@@ -108,8 +108,15 @@ function App() {
           </h1>
 
           <div className="flex flex-wrap items-center gap-4 text-sm font-medium">
-            <label className="flex items-center gap-2 cursor-pointer bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full transition-colors">
+            <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full transition-colors">
               <span className="text-gray-600 dark:text-gray-300">文字サイズ</span>
+              <button 
+                onClick={() => setFontSize(prev => Math.max(2, prev - 1))}
+                className="w-7 h-7 flex items-center justify-center bg-gray-200 dark:bg-gray-600 rounded-full text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-500 active:scale-95 transition-all text-lg font-medium leading-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                aria-label="文字を小さくする"
+              >
+                -
+              </button>
               <input
                 type="range"
                 min="2"
@@ -117,9 +124,16 @@ function App() {
                 step="1"
                 value={fontSize}
                 onChange={(e) => setFontSize(Number(e.target.value))}
-                className="w-24 accent-blue-600"
+                className="w-20 md:w-24 accent-blue-600"
               />
-            </label>
+              <button 
+                onClick={() => setFontSize(prev => Math.min(40, prev + 1))}
+                className="w-7 h-7 flex items-center justify-center bg-gray-200 dark:bg-gray-600 rounded-full text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-500 active:scale-95 transition-all text-lg font-medium leading-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                aria-label="文字を大きくする"
+              >
+                +
+              </button>
+            </div>
 
             <label className="flex items-center gap-2 cursor-pointer bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full transition-colors">
               <input
